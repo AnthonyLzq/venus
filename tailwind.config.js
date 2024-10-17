@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         'kiwi-maru': ['KiwiMaru'],
         'kiwi-maru-medium': ['KiwiMaruMedium'],
+        'quattrocento-sans-bold': ['QuattrocentoSansBold'],
       }
     },
   },
