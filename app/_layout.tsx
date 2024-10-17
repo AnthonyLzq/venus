@@ -14,6 +14,8 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    KiwiMaru: require('../assets/fonts/KiwiMaru-Regular.ttf'),
+    KiwiMaruMedium: require('../assets/fonts/KiwiMaru-Medium.ttf'),
   });
 
   useEffect(() => {
