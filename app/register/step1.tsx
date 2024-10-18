@@ -64,6 +64,15 @@ export default function Step1() {
           className="bg-[#56007E] mt-8 h-10 w-full border border-[#62519D] rounded-xl items-center justify-center"
         >
           <Text className='text-white text-lg font-quattrocento-sans-bold'>
+            Go home
+          </Text>
+        </Pressable>
+      </Link>
+      <Link href="/" asChild>
+        <Pressable
+          className="bg-[#56007E] mt-8 h-10 w-full border border-[#62519D] rounded-xl items-center justify-center"
+        >
+          <Text className='text-white text-lg font-quattrocento-sans-bold'>
             Continue
           </Text>
         </Pressable>
