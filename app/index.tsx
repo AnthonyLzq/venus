@@ -2,9 +2,11 @@ import { Pressable, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Link } from 'expo-router';
 
+import { BackgroundView } from '@/components/background-view';
+
 export default function HomeScreen() {
   return (
-    <View className="flex-1 bg-background justify-center px-[18.5%]">
+    <BackgroundView>
       <Text className="text-white text-3xl font-kiwi-maru-medium">Hello there!</Text>
       <Text className="text-white text-base font-kiwi-maru pt-2">Would you like to start now?</Text>
       <Link href="/register/step1" asChild>
@@ -17,6 +19,6 @@ export default function HomeScreen() {
         </Pressable>
       </Link>
       <StatusBar style="auto" />
-    </View>
+    </BackgroundView>
   );
 }

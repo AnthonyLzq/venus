@@ -1,10 +1,11 @@
+import { BackgroundScrollView } from '@/components/background-scroll-view';
 import { Link } from 'expo-router';
 import { Pressable, Text, View, TextInput } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 export default function Step1() {
   return (
-    <View className="flex-1 gap-y-1 bg-[#56007E] justify-center px-[18.5%]">
+    <BackgroundScrollView className="gap-y-1">
       <Text className="text-white text-3xl font-kiwi-maru-medium">Tell us about you</Text>
       <Text className="text-white font-kiwi-maru mt-2">Fill in the following with your basic information</Text>
       <View>
@@ -77,6 +78,6 @@ export default function Step1() {
           </Text>
         </Pressable>
       </Link>
-    </View>
+    </BackgroundScrollView>
   );
 }
