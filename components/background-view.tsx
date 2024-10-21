@@ -12,7 +12,12 @@ const BackgroundView = (props: Props) => {
   const { children, className } = props
 
   return (
-    <View className={cn('flex-1 bg-background justify-center px-[15.5%]', className)}>
+    <View
+      className={cn(
+        'flex-1 bg-background justify-center px-[15.5%]',
+        className
+      )}
+    >
       {children}
     </View>
   )

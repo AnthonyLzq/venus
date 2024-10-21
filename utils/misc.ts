@@ -32,7 +32,7 @@ const customTwMerge = extendTailwindMerge({
         {
           text: Object.keys(extendedTheme.fontSize)
         }
-      ],
+      ]
     }
   }
 })
@@ -40,6 +40,5 @@ const customTwMerge = extendTailwindMerge({
 const cn = (...inputs: ClassValue[]) => {
   return customTwMerge(clsx(inputs))
 }
-
 
 export { cn }

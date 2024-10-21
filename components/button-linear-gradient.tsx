@@ -1,5 +1,10 @@
 import { FC, ReactNode } from 'react'
-import { Dimensions, type GestureResponderEvent, Pressable, View } from 'react-native'
+import {
+  Dimensions,
+  type GestureResponderEvent,
+  Pressable,
+  View
+} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { cn } from '@/utils/misc'
 
@@ -16,11 +21,7 @@ const ButtonLinearGradient: FC<Props> = props => {
 
   return (
     <View
-      className={cn(
-        'w-[57.5%] rounded-6',
-        `!h-${buttonHeight}px`,
-        className
-      )}
+      className={cn('w-[57.5%] rounded-6', `!h-${buttonHeight}px`, className)}
     >
       <Pressable
         onPress={onPress}
