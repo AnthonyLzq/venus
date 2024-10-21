@@ -1,17 +1,17 @@
+import dayjs from 'dayjs'
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
+import { FieldValues, useForm } from 'react-hook-form'
 import { Text, View, Pressable, Modal, StyleSheet } from 'react-native'
 import { Path, Svg } from 'react-native-svg'
-import { useRouter } from 'expo-router'
 import { DateType } from 'react-native-ui-datepicker'
-import dayjs from 'dayjs'
-import { FieldValues, useForm } from 'react-hook-form'
 
+import { ButtonLinearGradient } from '@/components/button-linear-gradient'
+import { InputCalendar } from '@/components/input-calendar'
+import { InputText } from '@/components/input-text'
 import { RegisterLayout } from '@/components/register-layout'
 import { Button } from '@/components/ui/button'
-import { ButtonLinearGradient } from '@/components/button-linear-gradient'
 import { useClientStore } from '@/store/register'
-import { InputText } from '@/components/input-text'
-import { InputCalendar } from '@/components/input-calendar'
 
 export default function Step1() {
   const router = useRouter()

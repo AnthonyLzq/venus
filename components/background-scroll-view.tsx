@@ -1,6 +1,7 @@
-import { cn } from '@/utils/misc'
 import { ReactNode } from 'react'
 import { ScrollView } from 'react-native'
+
+import { cn } from '@/utils/misc'
 
 type Props = {
   children: ReactNode

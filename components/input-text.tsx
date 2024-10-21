@@ -1,7 +1,8 @@
-import { cn } from '@/utils/misc'
 import { FC } from 'react'
 import { Control, useController } from 'react-hook-form'
 import { TextInput } from 'react-native'
+
+import { cn } from '@/utils/misc'
 
 type InputProps = {
   name: string

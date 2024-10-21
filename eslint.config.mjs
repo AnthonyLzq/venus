@@ -1,8 +1,10 @@
-import globals from 'globals'
 import pluginJs from '@eslint/js'
-import tseslint from 'typescript-eslint'
-import pluginReact from 'eslint-plugin-react'
+import tsParser from '@typescript-eslint/parser'
+import eslintPluginImportX from 'eslint-plugin-import-x'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import pluginReact from 'eslint-plugin-react'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
 export default [
   {
@@ -32,7 +34,7 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     ...eslintPluginPrettierRecommended,
     rules: {
       'prettier/prettier': [
@@ -56,6 +58,66 @@ export default [
           tabWidth: 2,
           useTabs: false,
           embeddedLanguageFormatting: 'auto'
+        }
+      ]
+    }
+  },
+  eslintPluginImportX.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.typescript,
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    ignores: ['eslint.config.mjs'],
+    languageOptions: {
+      parser: tsParser,
+      ecmaVersion: 'latest',
+      sourceType: 'module'
+    },
+    rules: {
+      'import-x/order': [
+        'error',
+        {
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true
+          },
+          'newlines-between': 'always',
+          groups: [
+            'builtin',
+            ['external', 'type'],
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object'
+          ],
+          pathGroups: [
+            {
+              pattern: '@assets/**',
+              group: 'internal',
+              position: 'after'
+            },
+            {
+              pattern: '@components/**',
+              group: 'internal',
+              position: 'after'
+            },
+            {
+              pattern: '@constants/**',
+              group: 'internal',
+              position: 'after'
+            },
+            {
+              pattern: '@hooks/**',
+              group: 'internal',
+              position: 'after'
+            },
+            {
+              pattern: '@store/**',
+              group: 'internal',
+              position: 'after'
+            }
+          ],
+          pathGroupsExcludedImportTypes: []
         }
       ]
     }

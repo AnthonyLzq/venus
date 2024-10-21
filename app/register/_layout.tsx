@@ -1,7 +1,8 @@
-import { View } from 'react-native'
 import { Stack } from 'expo-router/stack'
-import { extendedTheme } from '@/utils/extended-theme'
 import { FC } from 'react'
+import { View } from 'react-native'
+
+import { extendedTheme } from '@/utils/extended-theme'
 import { cn } from '@/utils/misc'
 
 type Props = {

@@ -1,3 +1,4 @@
+import { LinearGradient } from 'expo-linear-gradient'
 import { FC, ReactNode } from 'react'
 import {
   Dimensions,
@@ -5,7 +6,7 @@ import {
   Pressable,
   View
 } from 'react-native'
-import { LinearGradient } from 'expo-linear-gradient'
+
 import { cn } from '@/utils/misc'
 
 type Props = {

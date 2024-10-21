@@ -1,5 +1,5 @@
-import { Text } from 'react-native'
 import { useRouter } from 'expo-router'
+import { Text } from 'react-native'
 
 import { BackgroundView } from '@/components/background-view'
 import { Button } from '@/components/ui/button'

@@ -1,9 +1,9 @@
+import { useRouter } from 'expo-router'
 import type { FC, ReactNode } from 'react'
 import { Pressable, Text } from 'react-native'
+import { Path, Svg } from 'react-native-svg'
 
 import { BackgroundScrollView } from './background-scroll-view'
-import { Path, Svg } from 'react-native-svg'
-import { useRouter } from 'expo-router'
 
 type Props = {
   children: ReactNode
