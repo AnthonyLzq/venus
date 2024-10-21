@@ -1,37 +1,32 @@
-import { useRef, useState } from 'react'
-import {
-  Text,
-  View,
-  TextInput,
-  Pressable,
-  Modal,
-  StyleSheet
-} from 'react-native'
+import { useState } from 'react'
+import { Text, View, Pressable, Modal, StyleSheet } from 'react-native'
 import { Path, Svg } from 'react-native-svg'
 import { useRouter } from 'expo-router'
-import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
+import { DateType } from 'react-native-ui-datepicker'
 import dayjs from 'dayjs'
+import { FieldValues, useForm } from 'react-hook-form'
 
 import { RegisterLayout } from '@/components/register-layout'
 import { Button } from '@/components/ui/button'
 import { ButtonLinearGradient } from '@/components/button-linear-gradient'
 import { useClientStore } from '@/store/register'
+import { InputText } from '@/components/input-text'
+import { InputCalendar } from '@/components/input-calendar'
 
 export default function Step1() {
   const router = useRouter()
+  const { control, handleSubmit } = useForm()
   const { fullName, setFullName, birthday, setBirthday } = useClientStore()
 
-  const firstRender = useRef(true)
-
   const [modalVisible, setModalVisible] = useState(false)
-  const [date, setDate] = useState<DateType>(birthday || dayjs())
-  const formatDate = firstRender.current
-    ? 'DD/MM/YYYY'
-    : dayjs(date).format('DD/MM/YYYY')
+  const [date, setDate] = useState<DateType>(birthday || null)
+  const formatDate = birthday
+    ? birthday
+    : date
+      ? dayjs(date).format('DD/MM/YYYY')
+      : 'DD/MM/YYYY'
 
   const openModal = () => {
-    if (firstRender.current) firstRender.current = false
-
     setModalVisible(true)
   }
 
@@ -39,10 +34,10 @@ export default function Step1() {
     setModalVisible(false)
   }
 
-  const goToStep2 = () => {
+  const goToStep2 = ({ fullName }: FieldValues) => {
     setBirthday(formatDate)
     setFullName(fullName)
-    // router.push('/register/step2')
+    router.push('/register/step2')
   }
 
   return (
@@ -61,11 +56,11 @@ export default function Step1() {
             </Text>
           </View>
           <View className='flex-row items-center justify-between px-4 -mt-2 py-2 border border-purple-3 rounded-2'>
-            <TextInput
-              className='text-white placeholder:text-white'
-              placeholder='Name, Last Name'
+            <InputText
+              name='fullName'
+              control={control}
               value={fullName}
-              onChangeText={text => setFullName(text)}
+              placeHolder='Name, Last Name'
             />
           </View>
         </View>
@@ -77,12 +72,10 @@ export default function Step1() {
           >
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
-                <DateTimePicker
-                  mode='single'
-                  date={date}
-                  onChange={params => {
-                    setDate(params.date)
-                  }}
+                <InputCalendar
+                  name='birthday'
+                  control={control}
+                  callback={date => setDate(date)}
                 />
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
@@ -103,7 +96,7 @@ export default function Step1() {
             onPress={() => openModal()}
           >
             <Text className='text-white placeholder:text-white'>
-              {birthday}
+              {birthday || formatDate}
             </Text>
             <Svg width={20} height={20} viewBox='0 0 24 28' fill='none'>
               <Path
@@ -240,7 +233,7 @@ export default function Step1() {
         </View>
       </View>
       <ButtonLinearGradient
-        onPress={goToStep2}
+        onPress={handleSubmit(goToStep2)}
         className='mt-[15.3%] mb-[11.3%] self-center'
       >
         <View className='flex flex-1 items-center justify-center'>
