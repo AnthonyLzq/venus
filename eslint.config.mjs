@@ -102,6 +102,11 @@ export default [
               position: 'after'
             },
             {
+              pattern: '@icons/**',
+              group: 'internal',
+              position: 'after'
+            },
+            {
               pattern: '@constants/**',
               group: 'internal',
               position: 'after'

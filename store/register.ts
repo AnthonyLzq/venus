@@ -1,5 +1,7 @@
 import { create } from 'zustand'
 
+import { GENDERS } from '@/utils/constants'
+
 type ClientStore = {
   fullName: string
   setFullName: (fullName: string) => void
@@ -20,7 +22,7 @@ const useClientStore = create<ClientStore>()(set => ({
   setFullName: fullName => set(() => ({ fullName })),
   birthday: '',
   setBirthday: birthday => set(() => ({ birthday })),
-  gender: '',
+  gender: GENDERS.NonSelected,
   setGender: gender => set(() => ({ gender })),
   skinType: '',
   setSkinType: skinType => set(() => ({ skinType })),

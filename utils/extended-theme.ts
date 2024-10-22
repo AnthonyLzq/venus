@@ -6,7 +6,9 @@ export const extendedTheme = {
     purple: {
       1: '#56007E',
       2: '#62519D',
-      3: '#AE00FF'
+      3: '#AE00FF',
+      4: '#2A003D',
+      5: '#5D3370'
     }
   },
   borderRadius: {
