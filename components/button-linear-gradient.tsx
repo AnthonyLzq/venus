@@ -21,14 +21,15 @@ const ButtonLinearGradient: FC<Props> = props => {
   const buttonHeight = height * 0.053
 
   return (
-    <View
-      className={cn('w-[57.5%] rounded-6', `!h-${buttonHeight}px`, className)}
-    >
+    <View className={cn('w-[57.5%] rounded-6', className)}>
       <Pressable
         onPress={onPress}
-        className={'flex-1 border border-purple-2 rounded-6 overflow-hidden'}
+        className='border border-purple-2 rounded-6 overflow-hidden'
       >
-        <LinearGradient colors={['#6B009D', '#734BC5']}>
+        <LinearGradient
+          style={{ height: buttonHeight }}
+          colors={['#6B009D', '#734BC5']}
+        >
           {children}
         </LinearGradient>
       </Pressable>

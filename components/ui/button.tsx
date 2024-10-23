@@ -8,13 +8,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-purple-1 border border-purple-2 w-[62%] !h-[6.65%]',
-        secondary: 'border border-purple-2 w-[57.5%] !h-[5.5%]',
+        default: 'bg-purple-1 border border-purple-2',
+        secondary: 'border border-purple-2',
         transparent: 'bg-background'
       },
       size: {
-        default: 'h-10 px-4',
-        sm: 'h-8 px-2',
+        default: 'w-[62%] !h-[6.65%]',
+        md: 'h-10 px-4',
+        sm: 'w-[57.5%] !h-[5.5%]',
         lg: 'h-12 px-8'
       }
     },

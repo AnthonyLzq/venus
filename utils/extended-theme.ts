@@ -55,5 +55,8 @@ export const extendedTheme = {
     9: '4rem', // 64px
     10: '6rem', // 96px,
     256: '64rem' // 1024px
+  },
+  boxShadow: {
+    calendar: '0px 2px 4px rgba(0, 0, 0, 0.25)'
   }
 } satisfies Config['theme']

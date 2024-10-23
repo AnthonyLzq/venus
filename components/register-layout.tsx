@@ -27,9 +27,9 @@ const RegisterLayout: FC<Props> = props => {
           <Path
             d='M22.5 27L13.5 18L22.5 9'
             stroke='white'
-            stroke-width='3.63255'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeWidth='3.63255'
+            strokeLinecap='round'
+            strokeLinejoin='round'
           />
         </Svg>
         <Text className='text-white'>Go back</Text>

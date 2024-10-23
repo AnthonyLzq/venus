@@ -7,13 +7,14 @@ import { cn } from '@/utils/misc'
 type InputProps = {
   name: string
   control: Control
+  callback?: () => void
   value?: string
   className?: string
   placeHolder?: string
 }
 
 const InputText: FC<InputProps> = props => {
-  const { name, control, value, className, placeHolder } = props
+  const { name, control, callback, value, className, placeHolder } = props
   const { field } = useController({
     name,
     defaultValue: value,
@@ -23,7 +24,11 @@ const InputText: FC<InputProps> = props => {
   return (
     <TextInput
       value={field.value}
-      onChangeText={field.onChange}
+      onChangeText={e => {
+        field.onChange(e)
+
+        if (callback) callback()
+      }}
       className={cn('text-white placeholder:text-white', className)}
       placeholder={placeHolder}
     />
