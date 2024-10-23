@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import { useRouter } from 'expo-router'
-import { useState } from 'react'
+import { startTransition, useState } from 'react'
 import { Text, View, Pressable, Modal, TextInput } from 'react-native'
 import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
 
@@ -45,8 +45,11 @@ export default function Step1() {
   }
 
   const goToStep2 = () => {
-    setBirthday(formatDate)
-    setFullName(fullName)
+    startTransition(() => {
+      if (birthday && birthday !== DATE_FORMAT) setBirthday(formatDate)
+
+      setFullName(fullName)
+    })
 
     if (
       fullName === '' ||
@@ -98,6 +101,7 @@ export default function Step1() {
             </Text>
           )}
         </View>
+
         <View className={cn('mb-5', formErrors.birthday ? 'mb-1' : '')}>
           <View className='z-10 self-start ml-2 bg-background'>
             <Text className='text-purple-3 px-1.5 text-xs font-kiwi-maru'>
@@ -153,6 +157,7 @@ export default function Step1() {
             </Text>
           )}
         </View>
+
         <View className={cn('mb-5', formErrors.gender ? 'mb-1' : '')}>
           <View className='z-10 self-start ml-2 bg-background'>
             <Text className='text-purple-3 px-1.5 text-xs font-kiwi-maru'>
