@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { GENDERS } from '@/utils/constants'
+import { GENDERS, SKIN_TYPES } from '@/utils/constants'
 
 type ClientStore = {
   fullName: string
@@ -24,7 +24,7 @@ const useClientStore = create<ClientStore>()(set => ({
   setBirthday: birthday => set(() => ({ birthday })),
   gender: GENDERS.NonSelected,
   setGender: gender => set(() => ({ gender })),
-  skinType: '',
+  skinType: SKIN_TYPES.NonSelected,
   setSkinType: skinType => set(() => ({ skinType })),
   skinSensitivity: '',
   setSkinSensitivity: skinSensitivity => set(() => ({ skinSensitivity })),
