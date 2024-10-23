@@ -232,7 +232,7 @@ export default function Step1() {
       </View>
       <ButtonLinearGradient
         onPress={goToStep2}
-        className='mt-[15.3%] mb-[11.3%] self-center'
+        className='mt-[14%] mb-[11.3%] self-center'
       >
         <View className='flex flex-1 items-center justify-center'>
           <Text className='text-white text-lg font-quattrocento-sans-bold'>

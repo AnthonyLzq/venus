@@ -23,7 +23,7 @@ export default [
       semi: ['error', 'never'],
       indent: ['error', 2],
       'newline-before-return': 'error',
-      quotes: ['error', 'single'],
+      quotes: ['error', 'single', { avoidEscape: true }],
       'jsx-quotes': ['error', 'prefer-single']
     }
   },
