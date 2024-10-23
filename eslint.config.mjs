@@ -3,6 +3,7 @@ import tsParser from '@typescript-eslint/parser'
 import eslintPluginImportX from 'eslint-plugin-import-x'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import pluginReact from 'eslint-plugin-react'
+import reactCompiler from 'eslint-plugin-react-compiler'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
@@ -66,7 +67,6 @@ export default [
   eslintPluginImportX.flatConfigs.typescript,
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ignores: ['eslint.config.mjs'],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 'latest',
@@ -125,6 +125,14 @@ export default [
           pathGroupsExcludedImportTypes: []
         }
       ]
+    }
+  },
+  {
+    plugins: {
+      'eslint-plugin-react-compiler': reactCompiler
+    },
+    rules: {
+      'eslint-plugin-react-compiler/react-compiler': 'error'
     }
   }
 ]
