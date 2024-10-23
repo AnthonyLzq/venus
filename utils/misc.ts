@@ -1,5 +1,5 @@
 import type { ClassValue } from 'clsx'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import { extendTailwindMerge } from 'tailwind-merge'
 
 import { extendedTheme } from './extended-theme'
@@ -32,7 +32,7 @@ const customTwMerge = extendTailwindMerge({
         {
           text: Object.keys(extendedTheme.fontSize)
         }
-      ],
+      ]
     }
   }
 })
@@ -40,6 +40,5 @@ const customTwMerge = extendTailwindMerge({
 const cn = (...inputs: ClassValue[]) => {
   return customTwMerge(clsx(inputs))
 }
-
 
 export { cn }

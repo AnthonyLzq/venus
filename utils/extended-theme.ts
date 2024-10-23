@@ -6,7 +6,9 @@ export const extendedTheme = {
     purple: {
       1: '#56007E',
       2: '#62519D',
-      3: '#AE00FF'
+      3: '#AE00FF',
+      4: '#2A003D',
+      5: '#5D3370'
     }
   },
   borderRadius: {
@@ -53,5 +55,8 @@ export const extendedTheme = {
     9: '4rem', // 64px
     10: '6rem', // 96px,
     256: '64rem' // 1024px
+  },
+  boxShadow: {
+    calendar: '0px 2px 4px rgba(0, 0, 0, 0.25)'
   }
 } satisfies Config['theme']
