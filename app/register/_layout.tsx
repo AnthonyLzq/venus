@@ -46,9 +46,10 @@ export default function Layout() {
           backgroundColor: extendedTheme.colors.background
         },
         headerTitle: props => <LogoTitle route={route} {...props} />,
-        headerLeft: () => null,
+        headerShadowVisible: false,
         headerBackVisible: false,
-        headerBackTitleVisible: false
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center'
       })}
     >
       <Stack.Screen name='step1' options={{}} />
