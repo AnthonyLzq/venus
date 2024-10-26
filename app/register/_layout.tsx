@@ -16,11 +16,10 @@ type Props = {
 }
 
 const STEPS = {
-  step1: 'w-3',
-  step2: 'w-[20%]',
-  step3: 'w-[40%]',
-  step4: 'w-[60%]',
-  step5: 'w-[80%]'
+  step1: 'w-[25%]',
+  step2: 'w-[50%]',
+  step3: 'w-[75%]',
+  step4: 'w-[100%]'
 } as Record<string, string>
 
 const LogoTitle: FC<Props> = props => {
@@ -47,9 +46,10 @@ export default function Layout() {
           backgroundColor: extendedTheme.colors.background
         },
         headerTitle: props => <LogoTitle route={route} {...props} />,
-        headerLeft: () => null,
+        headerShadowVisible: false,
         headerBackVisible: false,
-        headerBackTitleVisible: false
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center'
       })}
     >
       <Stack.Screen name='step1' options={{}} />

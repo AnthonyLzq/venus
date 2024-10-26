@@ -9,14 +9,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-purple-1 border border-purple-2',
-        secondary: 'border border-purple-2',
+        secondary: 'bg-purple-4 rounded-4',
         transparent: 'bg-background'
       },
       size: {
         default: 'w-[62%] !h-[6.65%]',
         md: 'h-10 px-4',
         sm: 'w-[57.5%] !h-[5.5%]',
-        lg: 'h-12 px-8'
+        lg: 'h-16 px-8'
       }
     },
     defaultVariants: {
@@ -49,7 +49,7 @@ const buttonTextVariants = cva('text-center font-medium', {
 
 interface ButtonProps
   extends React.ComponentPropsWithoutRef<typeof TouchableOpacity>,
-    VariantProps<typeof buttonVariants> {}
+  VariantProps<typeof buttonVariants> { }
 
 function Button({ children, className, variant, size, ...props }: ButtonProps) {
   return (
