@@ -1,9 +1,9 @@
 import { useRouter } from 'expo-router'
 import type { FC, ReactNode } from 'react'
-import { Pressable, Text } from 'react-native'
+import { Pressable, Text, View } from 'react-native'
 import { Path, Svg } from 'react-native-svg'
 
-import { BackgroundScrollView } from './background-scroll-view'
+import { BackgroundView } from './background-view'
 
 type Props = {
   children: ReactNode
@@ -18,7 +18,7 @@ const RegisterLayout: FC<Props> = props => {
   }
 
   return (
-    <BackgroundScrollView className='pt-[3.7%]'>
+    <BackgroundView className='pt-[3.7%]'>
       <Pressable
         className='-ml-2 pb-[8.4%] flex flex-row items-center'
         onPress={goBack}
@@ -34,8 +34,10 @@ const RegisterLayout: FC<Props> = props => {
         </Svg>
         <Text className='text-white'>Go back</Text>
       </Pressable>
-      {children}
-    </BackgroundScrollView>
+      <View className='h-[80vh] flex-1 justify-between pt-[7.5%]'>
+        {children}
+      </View>
+    </BackgroundView>
   )
 }
 

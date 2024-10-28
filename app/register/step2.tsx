@@ -61,54 +61,49 @@ export default function Step2() {
 
   return (
     <RegisterLayout>
-      <View className='h-[80vh] flex-1 justify-between pt-[7.5%]'>
-        <View>
-          <Text className='text-white text-3xl font-kiwi-maru-medium'>
-            What's your skin type?
-          </Text>
-          <Text className='text-white font-kiwi-maru mt-4'>
-            Knowing your skin type helps us give you more tailored
-            recommendations
-          </Text>
-          <View className='mt-5 flex flex-col gap-y-4'>
-            {skinTypesEntries.map(([key, value], index) => (
-              <SkinButton
-                key={key}
-                skinType={value}
-                onPress={() => {
-                  startTransition(() => {
-                    setSkinType(value)
-                    setError(false)
-                  })
-                }}
-                className={cn(
-                  skinType === value ? 'bg-purple-5' : '',
-                  skinTypesEntries.length - 1 !== index
-                    ? ''
-                    : error
-                      ? 'mb-1'
-                      : 'mb-5'
-                )}
-              />
-            ))}
-          </View>
-          {error && (
-            <Text className='text-red-50 text-sm font-kiwi-maru'>
-              Please select your skin type
-            </Text>
-          )}
-        </View>
-        <ButtonLinearGradient
-          onPress={goToStep3}
-          className='bottom-[11.3%] self-center'
-        >
-          <View className='flex flex-1 items-center justify-center'>
-            <Text className='text-white text-lg font-quattrocento-sans-bold'>
-              Continue
-            </Text>
-          </View>
-        </ButtonLinearGradient>
+      <Text className='text-white text-3xl font-kiwi-maru-medium'>
+        What's your skin type?
+      </Text>
+      <Text className='text-white font-kiwi-maru mt-4'>
+        Knowing your skin type helps us give you more tailored recommendations
+      </Text>
+      <View className='mt-5 flex flex-col gap-y-4'>
+        {skinTypesEntries.map(([key, value], index) => (
+          <SkinButton
+            key={key}
+            skinType={value}
+            onPress={() => {
+              startTransition(() => {
+                setSkinType(value)
+                setError(false)
+              })
+            }}
+            className={cn(
+              skinType === value ? 'bg-purple-5' : '',
+              skinTypesEntries.length - 1 !== index
+                ? ''
+                : error
+                  ? 'mb-1'
+                  : 'mb-5'
+            )}
+          />
+        ))}
       </View>
+      {error && (
+        <Text className='text-red-50 text-sm font-kiwi-maru'>
+          Please select your skin type
+        </Text>
+      )}
+      <ButtonLinearGradient
+        onPress={goToStep3}
+        className='bottom-[11.3%] self-center'
+      >
+        <View className='flex flex-1 items-center justify-center'>
+          <Text className='text-white text-lg font-quattrocento-sans-bold'>
+            Continue
+          </Text>
+        </View>
+      </ButtonLinearGradient>
     </RegisterLayout>
   )
 }
