@@ -83,7 +83,7 @@ export default function Step1() {
               Full Name
             </Text>
           </View>
-          <View className='flex-row items-center justify-between px-4 -mt-2 py-2 border border-purple-3 rounded-2'>
+          <View className='flex-row items-center justify-between px-4 -mt-2 border border-purple-3 rounded-2'>
             <TextInput
               value={fullName}
               placeholder='Name, Last Name'
