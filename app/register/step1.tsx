@@ -91,10 +91,8 @@ export default function Step1() {
                   value={fullName}
                   placeholder='Name, Last Name'
                   onChangeText={text => {
-                    startTransition(() => {
-                      // setFullName(text)
-                      setFormErrors({ ...formErrors, fullName: !text })
-                    })
+                    setFullName(text)
+                    setFormErrors({ ...formErrors, fullName: !text })
                   }}
                   className='text-white placeholder:text-white'
                 />

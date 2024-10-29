@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router'
-import { startTransition, useState, type FC } from 'react'
+import { useState, type FC } from 'react'
 import { Text, View } from 'react-native'
 
 import { ButtonLinearGradient } from '@/components/button-linear-gradient'
@@ -76,10 +76,8 @@ export default function Step2() {
                 key={key}
                 skinType={value}
                 onPress={() => {
-                  startTransition(() => {
-                    setSkinType(value)
-                    setError(false)
-                  })
+                  setSkinType(value)
+                  setError(false)
                 }}
                 className={cn(
                   skinType === value ? 'bg-purple-5' : '',
