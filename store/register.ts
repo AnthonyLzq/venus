@@ -5,7 +5,7 @@ import { GENDERS, SKIN_TYPES } from '@/utils/constants'
 type ClientStore = {
   fullName: string
   setFullName: (fullName: string) => void
-  birthday: string
+  birthday: string | null
   setBirthday: (birthday: string) => void
   gender: string
   setGender: (gender: string) => void
@@ -20,7 +20,7 @@ type ClientStore = {
 const useClientStore = create<ClientStore>()(set => ({
   fullName: '',
   setFullName: fullName => set(() => ({ fullName })),
-  birthday: '',
+  birthday: null,
   setBirthday: birthday => set(() => ({ birthday })),
   gender: GENDERS.NonSelected,
   setGender: gender => set(() => ({ gender })),

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { useRouter } from 'expo-router'
-import { startTransition, useState } from 'react'
-import { Text, View, Pressable, Modal, TextInput } from 'react-native'
+import { useState } from 'react'
+import { Platform, Text, View, Pressable, Modal, TextInput } from 'react-native'
 import DateTimePicker, { DateType } from 'react-native-ui-datepicker'
 
 import { RegisterLayout } from '@/components/register-layout'
@@ -28,12 +28,7 @@ export default function Step1() {
     gender: false
   })
   const [modalVisible, setModalVisible] = useState(false)
-  const [date, setDate] = useState<DateType>(birthday || null)
-  const formatDate = birthday
-    ? birthday
-    : date
-      ? dayjs(date).format(DATE_FORMAT)
-      : DATE_FORMAT
+  const [date, setDate] = useState<DateType>(birthday)
 
   const openModal = () => {
     setModalVisible(true)
@@ -44,21 +39,10 @@ export default function Step1() {
   }
 
   const goToStep2 = () => {
-    startTransition(() => {
-      if (birthday && birthday !== DATE_FORMAT) setBirthday(formatDate)
-
-      setFullName(fullName)
-    })
-
-    if (
-      fullName === '' ||
-      !formatDate ||
-      formatDate === DATE_FORMAT ||
-      gender === GENDERS.NonSelected
-    ) {
+    if (fullName === '' || !birthday || gender === GENDERS.NonSelected) {
       setFormErrors({
         fullName: fullName === '',
-        birthday: !formatDate || formatDate === DATE_FORMAT,
+        birthday: !birthday,
         gender: gender === GENDERS.NonSelected
       })
 
@@ -83,7 +67,12 @@ export default function Step1() {
               Full Name
             </Text>
           </View>
-          <View className='flex-row items-center justify-between px-4 -mt-2 border border-purple-3 rounded-2'>
+          <View
+            className={cn(
+              'flex-row items-center justify-between px-4 py-3 -mt-2 border border-purple-3 rounded-2',
+              Platform.OS === 'android' && 'py-0'
+            )}
+          >
             <TextInput
               value={fullName}
               placeholder='Name, Last Name'
@@ -91,7 +80,10 @@ export default function Step1() {
                 setFullName(text)
                 setFormErrors({ ...formErrors, fullName: !text })
               }}
-              className={'text-white placeholder:text-white'}
+              className={cn(
+                'text-white',
+                Platform.OS !== 'web' ? 'placeholder:text-white' : ''
+              )}
             />
           </View>
           {formErrors.fullName && (
@@ -101,7 +93,7 @@ export default function Step1() {
           )}
         </View>
 
-        <View className={cn('mb-6', formErrors.fullName ? 'mb-0' : '')}>
+        <View className={cn('mb-6', formErrors.birthday ? 'mb-0' : '')}>
           <View className='z-10 self-start ml-2 bg-background'>
             <Text className='text-purple-3 px-1.5 text-xs font-kiwi-maru'>
               Birthday
@@ -111,8 +103,13 @@ export default function Step1() {
             className='flex-row items-center justify-between px-4 -mt-2 py-3 border border-purple-3 rounded-2'
             onPress={() => openModal()}
           >
-            <Text className='text-white placeholder:text-white'>
-              {birthday || formatDate}
+            <Text
+              className={cn(
+                'text-white',
+                Platform.OS !== 'web' ? 'placeholder:text-white' : ''
+              )}
+            >
+              {birthday ?? DATE_FORMAT}
             </Text>
             <CalendarIcon />
           </Pressable>
@@ -130,7 +127,8 @@ export default function Step1() {
                   mode='single'
                   date={date}
                   onChange={params => {
-                    setDate(params.date)
+                    setDate(params.date ?? null)
+                    setBirthday(dayjs(params.date).format(DATE_FORMAT))
                     setFormErrors({ ...formErrors, birthday: false })
                   }}
                   maxDate={new Date()}
@@ -157,7 +155,7 @@ export default function Step1() {
           )}
         </View>
 
-        <View className={cn('mb-6', formErrors.fullName ? 'mb-0' : '')}>
+        <View className={cn('mb-6', formErrors.gender ? 'mb-0' : '')}>
           <View className='z-10 self-start ml-2 bg-background'>
             <Text className='text-purple-3 px-1.5 text-xs font-kiwi-maru'>
               Gender
