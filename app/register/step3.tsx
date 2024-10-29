@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
 
 import { RegisterLayout } from '@/components/register-layout'
 

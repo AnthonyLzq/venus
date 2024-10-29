@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router'
-import { startTransition, useState, type FC } from 'react'
+import { useState, type FC } from 'react'
 import { Text, View } from 'react-native'
 
 import { RegisterLayout } from '@/components/register-layout'
@@ -72,10 +72,8 @@ export default function Step2() {
             key={key}
             skinType={value}
             onPress={() => {
-              startTransition(() => {
-                setSkinType(value)
-                setError(false)
-              })
+              setSkinType(value)
+              setError(false)
             }}
             className={cn(
               skinType === value ? 'bg-purple-5' : '',
