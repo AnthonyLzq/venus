@@ -94,7 +94,7 @@ export default function Step1() {
                     setFullName(text)
                     setFormErrors({ ...formErrors, fullName: !text })
                   }}
-                  className={'text-white placeholder:text-white'}
+                  className='text-white placeholder:text-white'
                 />
               </View>
               {formErrors.fullName && (
@@ -114,9 +114,7 @@ export default function Step1() {
                 className='flex-row items-center justify-between px-4 -mt-2 py-3 border border-purple-3 rounded-2'
                 onPress={() => openModal()}
               >
-                <Text className='text-white placeholder:text-white'>
-                  {birthday || formatDate}
-                </Text>
+                <Text className='text-white'>{birthday || formatDate}</Text>
                 <CalendarIcon />
               </Pressable>
               <Modal
