@@ -1,0 +1,17 @@
+import Svg, { Path } from 'react-native-svg'
+
+import { extendedTheme } from '@/utils/extended-theme'
+
+const SadFace = () => (
+  <Svg width='40' height='40' viewBox='0 0 48 48' fill='none'>
+    <Path
+      d='M32 32C32 32 29 28 24 28C19 28 16 32 16 32M18 18H18.02M30 18H30.02M44 24C44 35.0457 35.0457 44 24 44C12.9543 44 4 35.0457 4 24C4 12.9543 12.9543 4 24 4C35.0457 4 44 12.9543 44 24Z'
+      stroke={extendedTheme.colors.purple[5]}
+      stroke-width='3.5'
+      stroke-linecap='round'
+      stroke-linejoin='round'
+    />
+  </Svg>
+)
+
+export { SadFace }

@@ -28,9 +28,7 @@ const LogoTitle: FC<Props> = props => {
   return (
     <View className='bg-background flex justify-center items-center pt-[7.8%]'>
       <View className='w-[69vw] h-3 rounded-4 border border-purple-3'>
-        <View
-          className={cn('h-3 bg-white rounded-full mt-[-1px]', width)}
-        ></View>
+        <View className={cn('h-3 bg-white rounded-full mt-[-1px]', width)} />
       </View>
     </View>
   )
@@ -54,6 +52,7 @@ export default function Layout() {
       <Stack.Screen name='step1' options={{}} />
       <Stack.Screen name='step2' options={{}} />
       <Stack.Screen name='step3' options={{}} />
+      <Stack.Screen name='step4' options={{}} />
     </Stack>
   )
 }
