@@ -1,16 +1,19 @@
 import { useRouter } from 'expo-router'
 import type { FC, ReactNode } from 'react'
-import { Pressable, Text } from 'react-native'
-import { Path, Svg } from 'react-native-svg'
+import { Pressable, Text, View } from 'react-native'
 
-import { BackgroundScrollView } from './background-scroll-view'
+import { GoBackIcon } from '@/icons/go-back'
+
+import { BackgroundView } from './background-view'
+import { ButtonLinearGradient } from './button-linear-gradient'
 
 type Props = {
   children: ReactNode
+  gotToNextStep?: () => void
 }
 
 const RegisterLayout: FC<Props> = props => {
-  const { children } = props
+  const { children, gotToNextStep } = props
   const router = useRouter()
 
   const goBack = () => {
@@ -18,24 +21,29 @@ const RegisterLayout: FC<Props> = props => {
   }
 
   return (
-    <BackgroundScrollView className='pt-[3.7%]'>
+    <BackgroundView className='pt-[3.7%]'>
       <Pressable
         className='-ml-2 pb-[8.4%] flex flex-row items-center'
         onPress={goBack}
       >
-        <Svg width={20} height={20} viewBox='0 0 36 36' fill='none'>
-          <Path
-            d='M22.5 27L13.5 18L22.5 9'
-            stroke='white'
-            strokeWidth='3.63255'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-        </Svg>
+        <GoBackIcon />
         <Text className='text-white'>Go back</Text>
       </Pressable>
-      {children}
-    </BackgroundScrollView>
+      <View className='h-[80vh] flex-1 justify-between pt-[7.5%]'>
+        <View>{children}</View>
+
+        <ButtonLinearGradient
+          onPress={gotToNextStep}
+          className='bottom-[11.3%] self-center'
+        >
+          <View className='flex flex-1 items-center justify-center'>
+            <Text className='text-white text-lg font-quattrocento-sans-bold'>
+              Continue
+            </Text>
+          </View>
+        </ButtonLinearGradient>
+      </View>
+    </BackgroundView>
   )
 }
 

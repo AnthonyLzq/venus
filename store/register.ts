@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 
-import { GENDERS, SKIN_TYPES } from '@/utils/constants'
+import { GENDERS, SKIN_SENSITIVITIES, SKIN_TYPES } from '@/utils/constants'
 
 type ClientStore = {
   fullName: string
   setFullName: (fullName: string) => void
-  birthday: string
+  birthday: string | null
   setBirthday: (birthday: string) => void
   gender: string
   setGender: (gender: string) => void
@@ -20,13 +20,13 @@ type ClientStore = {
 const useClientStore = create<ClientStore>()(set => ({
   fullName: '',
   setFullName: fullName => set(() => ({ fullName })),
-  birthday: '',
+  birthday: null,
   setBirthday: birthday => set(() => ({ birthday })),
   gender: GENDERS.NonSelected,
   setGender: gender => set(() => ({ gender })),
   skinType: SKIN_TYPES.NonSelected,
   setSkinType: skinType => set(() => ({ skinType })),
-  skinSensitivity: '',
+  skinSensitivity: SKIN_SENSITIVITIES.NonSelected,
   setSkinSensitivity: skinSensitivity => set(() => ({ skinSensitivity })),
   concerns: [],
   setConcerns: concern =>
